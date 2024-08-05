@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat Application</title>
+<link rel="stylesheet" href="{% static 'rooms.css' %}">
+</head>
+<body>
+  <div class="navbar">
+    <h1>Chat App</h1>
+  </div>
+  <div class="user-actions">
+    <a href="logout">logout</a>
+  </div>
+  <div class="box-container">
+    
+    {% block body %}{% endblock body %}
+    {% for room in rooms %}
+    
+    {% endfor %}
+  </div>
+  {% block script %}{% endblock script %}
+</body>
+</html>

@@ -1,0 +1,102 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #222;
+  color: #fff;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px; /* Width of the nav bar */
+  height: 100vh; /* Full height */
+  background-color: #3498db; /* Blue color for nav bar */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar h1 {
+  margin: 0;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.user-actions {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.user-actions a {
+  padding: 10px 20px;
+  margin-left: 10px;
+  border: none;
+  background-color: #2ecc71; /* Green color for buttons */
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.user-actions a:hover {
+  background-color: #27ae60; /* Darker green on hover */
+  transform: rotate(360deg); /* Rotate 360 degrees on hover */
+}
+
+.box-container {
+  position: relative; /* Set position relative for positioning the h1 */
+  color: forestgreen;
+  display: flex;
+  flex-wrap: wrap; /* Allow boxes to wrap onto the next line */
+  justify-content: center;
+  align-items: flex-start; /* Align items at the start of the cross axis */
+  margin-top: 200px;
+}
+
+.box-container h1 {
+  position: absolute;
+  font-size: 40px;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  color: #ff6347; /* Tomato color for h1 */
+  text-shadow: 
+    0 0 10px rgba(255, 99, 71, 0.7), /* Outer glow */
+    0 0 20px rgba(255, 99, 71, 0.5), /* Outer glow */
+    0 0 30px rgba(255, 99, 71, 0.3); /* Outer glow */
+}
+
+.box-container h2 {
+  position: absolute;
+  font-size: 30px;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  color: #ffa500; /* Orange color for h2 */
+  text-shadow: 
+    0 0 10px rgba(255, 165, 0, 0.7), /* Outer glow */
+    0 0 20px rgba(255, 165, 0, 0.5), /* Outer glow */
+    0 0 30px rgba(255, 165, 0, 0.3); /* Outer glow */
+}
+
+.box-container h3 {
+  position: absolute;
+  top: 90px;
+  left: 53%;
+  transform: translateX(-50%);
+  margin: 0;
+  color: #1e90ff; /* DodgerBlue color for h3 */
+  text-shadow: 
+    0 0 10px rgba(30, 144, 255, 0.7), /* Outer glow */
+    0 0 20px rgba(30, 144, 255, 0.5), /* Outer glow */
+    0 0 30px rgba(30, 144, 255, 0.3); /* Outer glow */
+}

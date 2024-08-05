@@ -1,0 +1,59 @@
+{% extends "room2.html" %}
+{% block body %}
+<h1 class="room-name">{{ room.name }}</h1>
+<div class="chat__container" id="id_chat_container">
+  <div class="chat__messages" id="id_chat_messages"></div>
+  <div class="chat__input__container">
+    <textarea id="id_message_send_input"></textarea>
+    <button type="submit" id="id_message_send_button">Send Message</button>
+  </div>
+</div>
+{% endblock body %}
+
+{% block script %}
+{{ room.slug|json_script:"json-roomname" }}
+{{ request.user.username|json_script:"json-username" }}
+<script>
+  const roomName = JSON.parse(document.getElementById('json-roomname').textContent);
+  const username = JSON.parse(document.getElementById('json-username').textContent);
+
+  // WebSocket connection specific to a room
+  const chatSocket = new WebSocket("ws://" + window.location.host + "/ws/chat/" + roomName + "/");
+
+  chatSocket.onopen = function (e) {
+    console.log("The connection was setup successfully !");
+  };
+  chatSocket.onclose = function (e) {
+    console.log("Something unexpected happened !");
+  };
+
+  document.querySelector("#id_message_send_input").focus();
+  document.querySelector("#id_message_send_input").onkeyup = function (e) {
+    if (e.keyCode == 13 && !e.shiftKey) {
+      document.querySelector("#id_message_send_button").click();
+      e.preventDefault();
+    }
+  };
+
+  const messageSendButton = document.querySelector("#id_message_send_button");
+  if (messageSendButton) {
+    messageSendButton.onclick = function (e) {
+      var messageInput = document.querySelector("#id_message_send_input").value;
+      chatSocket.send(JSON.stringify({ message: messageInput, username: username }));
+      document.querySelector("#id_message_send_input").value = ""; // Clear the textarea after sending the message
+    };
+  } else {
+    console.error("Element with id 'id_message_send_button' not found.");
+  }
+
+  chatSocket.onmessage = function (e) {
+    const data = JSON.parse(e.data);
+    var div = document.createElement("div");
+    div.style.whiteSpace = 'pre-wrap'; // Ensure long messages wrap to the next line
+    div.style.padding = '5px';
+    div.style.borderBottom = '1px solid #ddd';
+    div.innerHTML = `<strong style="color: #007BFF;">${data.username}</strong>: <span style="color: white;">${data.message}</span>`;
+    document.querySelector("#id_chat_messages").appendChild(div);
+  };
+</script>
+{% endblock script %}
