@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-fxdcze&@5)6azwezkr@*t)$zyf_a!x!!fmy%-da+m7hu=%te5*
 DEBUG = True
 SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_HTTPONLY = True
-ALLOWED_HOSTS = ["https://chat-app1-vitx.onrender.com"]
+ALLOWED_HOSTS = ['chat-app1-vitx.onrender.com']
 
 
 # Application definition
