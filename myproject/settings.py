@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-fxdcze&@5)6azwezkr@*t)$zyf_a!x!!fmy%-da+m7hu=%te5*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_HTTPONLY = True
 ALLOWED_HOSTS = ['chat-app1-vitx.onrender.com']
